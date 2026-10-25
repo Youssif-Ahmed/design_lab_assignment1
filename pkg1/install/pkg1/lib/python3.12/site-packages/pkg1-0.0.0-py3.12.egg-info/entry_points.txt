@@ -1,0 +1,2 @@
+[console_scripts]
+control = pkg1.control:main

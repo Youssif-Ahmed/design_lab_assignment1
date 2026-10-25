@@ -1,0 +1,7 @@
+# Request
+float32 linear_limit
+float32 angular_limit
+---
+# Response
+bool success
+string message

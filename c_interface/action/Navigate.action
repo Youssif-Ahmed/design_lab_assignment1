@@ -1,0 +1,14 @@
+# Goal
+float32 x
+float32 y
+float32 yaw
+---
+# Result
+bool success
+float32 final_x
+float32 final_y
+float32 final_theta
+---
+# Feedback
+float32 remaining_distance
+

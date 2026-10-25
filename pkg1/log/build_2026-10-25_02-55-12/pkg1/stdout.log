@@ -1,0 +1,37 @@
+running egg_info
+creating build/pkg1/pkg1.egg-info
+writing build/pkg1/pkg1.egg-info/PKG-INFO
+writing dependency_links to build/pkg1/pkg1.egg-info/dependency_links.txt
+writing entry points to build/pkg1/pkg1.egg-info/entry_points.txt
+writing requirements to build/pkg1/pkg1.egg-info/requires.txt
+writing top-level names to build/pkg1/pkg1.egg-info/top_level.txt
+writing manifest file 'build/pkg1/pkg1.egg-info/SOURCES.txt'
+reading manifest file 'build/pkg1/pkg1.egg-info/SOURCES.txt'
+writing manifest file 'build/pkg1/pkg1.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/youssif/Desktop/design_lab/pkg1/build/pkg1/build
+creating /home/youssif/Desktop/design_lab/pkg1/build/pkg1/build/lib
+creating /home/youssif/Desktop/design_lab/pkg1/build/pkg1/build/lib/pkg1
+copying pkg1/__init__.py -> /home/youssif/Desktop/design_lab/pkg1/build/pkg1/build/lib/pkg1
+copying pkg1/control.py -> /home/youssif/Desktop/design_lab/pkg1/build/pkg1/build/lib/pkg1
+running install
+running install_lib
+creating /home/youssif/Desktop/design_lab/pkg1/install/pkg1/lib/python3.12/site-packages/pkg1
+copying /home/youssif/Desktop/design_lab/pkg1/build/pkg1/build/lib/pkg1/__init__.py -> /home/youssif/Desktop/design_lab/pkg1/install/pkg1/lib/python3.12/site-packages/pkg1
+copying /home/youssif/Desktop/design_lab/pkg1/build/pkg1/build/lib/pkg1/control.py -> /home/youssif/Desktop/design_lab/pkg1/install/pkg1/lib/python3.12/site-packages/pkg1
+byte-compiling /home/youssif/Desktop/design_lab/pkg1/install/pkg1/lib/python3.12/site-packages/pkg1/__init__.py to __init__.cpython-312.pyc
+byte-compiling /home/youssif/Desktop/design_lab/pkg1/install/pkg1/lib/python3.12/site-packages/pkg1/control.py to control.cpython-312.pyc
+running install_data
+creating /home/youssif/Desktop/design_lab/pkg1/install/pkg1/share/ament_index
+creating /home/youssif/Desktop/design_lab/pkg1/install/pkg1/share/ament_index/resource_index
+creating /home/youssif/Desktop/design_lab/pkg1/install/pkg1/share/ament_index/resource_index/packages
+copying resource/pkg1 -> /home/youssif/Desktop/design_lab/pkg1/install/pkg1/share/ament_index/resource_index/packages
+copying package.xml -> /home/youssif/Desktop/design_lab/pkg1/install/pkg1/share/pkg1
+creating /home/youssif/Desktop/design_lab/pkg1/install/pkg1/share/pkg1/launch
+copying launch/bringup.launch.py -> /home/youssif/Desktop/design_lab/pkg1/install/pkg1/share/pkg1/launch
+running install_egg_info
+Copying build/pkg1/pkg1.egg-info to /home/youssif/Desktop/design_lab/pkg1/install/pkg1/lib/python3.12/site-packages/pkg1-0.0.0-py3.12.egg-info
+running install_scripts
+Installing control script to /home/youssif/Desktop/design_lab/pkg1/install/pkg1/lib/pkg1
+writing list of installed files to '/home/youssif/Desktop/design_lab/pkg1/build/pkg1/install.log'
