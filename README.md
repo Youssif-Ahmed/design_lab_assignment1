@@ -107,13 +107,13 @@ Drives the turtle to target coordinates (`x=8.0, y=2.0, yaw=0.0`) using the cust
 ros2 action send_goal /go_to_pose c_interface/action/Navigate "{x: 8.0, y: 2.0, yaw: 0.0}"
 ```
 
-### 3. Test Speed-Setting Service (`/set_speed`)
+### 3. Test Speed-Setting Service (`/set_speed_limits`)
 Dynamically updates the controller's maximum speed limits while active:
 ```bash
 ros2 service call /set_speed_limits c_interface/srv/Setspeed "{linear_limit: 3.0, angular_limit: 5.0}"
 ```
 
-### 4. Test Clear / Reset Service (`/clear_canvas`)
+### 4. Test Clear / Reset Service (`/reset_turtle`)
 Clears the background canvas and safely resets the turtle to its home position:
 ```bash
 ros2 service call /reset_turtle c_interface/srv/Clearc "{}"
