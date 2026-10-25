@@ -39,11 +39,13 @@ design_lab_assignment1/
 
 ### `c_interface`
 
-| Interface | Type | Fields / Description |
+| Interface | Type | Description |
 |-----------|------|----------------------|
 | `Navigate` | action | Goal: `float32 x`, `float32 y`, `float32 yaw`. Result/Feedback integration for goal-reaching. |
 | `Setspeed` | srv | Request: `float32 max_linear_speed`, `float32 max_angular_speed`. Response: `bool success`, `string message`. |
 | `Clearc` | srv | Request: empty. Clears canvas and resets turtle position without drawing unwanted tracking lines. |
+| `Poseinterface` | msg |Defines the target position and orientation of the turtle using float32 x (target X-coordinate), float32 y (target Y-coordinate), and float32 yaw (target orientation angle in radians) |
+| `Square` | action | Goal: float32 side_length. Result: bool success. Feedback: current side/progress tracking while drawing the square trajectory.|
 
 ### `pkg1`
 
@@ -54,15 +56,6 @@ design_lab_assignment1/
 | `square.launch.py` | launch file | Automates system bringup and sequences action goals to drive the turtle in a square/path trajectory. |
 
 ---
-
-## Prerequisites
-
-- Ubuntu 24.04 with ROS 2 Jazzy installed
-- Turtlesim and build dependencies:
-
-```bash
-sudo apt install ros-jazzy-turtlesim ros-jazzy-ros2launch python3-colcon-common-extensions
-```
 
 ## Build
 
@@ -76,6 +69,8 @@ source install/setup.bash
 ```
 
 > **Note:** Every new terminal session requires sourcing your workspace via `source ~/ros2_ws/install/setup.bash` before running any ROS 2 commands utilizing these packages.
+
+> **Note:** If an error occurs during package creation, extract the two folders from the cloned repository and place them directly into the src directory.
 
 ---
 
@@ -99,23 +94,47 @@ ros2 launch pkg1 square.launch.py
 
 Open a separate terminal, source your workspace, and use the commands below to test individual features:
 
-### 1. Test Navigation Action (`/go_to_pose`)
+### 1. Check the Custom Interfaces
+Gives info on the custom interfaces
+```bash
+ros2 interface list | grep c_interface
+ros2 interface show c_interface/msg/Poseinterface
+```
+
+### 2. Test Navigation Action (`/go_to_pose`)
 Drives the turtle to target coordinates (`x=8.0, y=2.0, yaw=0.0`) using the custom action server:
 ```bash
 ros2 action send_goal /go_to_pose c_interface/action/Navigate "{x: 8.0, y: 2.0, yaw: 0.0}"
 ```
 
-### 2. Test Speed-Setting Service (`/set_speed`)
+### 3. Test Speed-Setting Service (`/set_speed`)
 Dynamically updates the controller's maximum speed limits while active:
 ```bash
-ros2 service call /set_speed c_interface/srv/Setspeed "{max_linear_speed: 2.0, max_angular_speed: 1.5}"
+ros2 service call /set_speed_limits c_interface/srv/Setspeed "{linear_limit: 3.0, angular_limit: 5.0}"
 ```
 
-### 3. Test Clear / Reset Service (`/clear_canvas`)
+### 4. Test Clear / Reset Service (`/clear_canvas`)
 Clears the background canvas and safely resets the turtle to its home position:
 ```bash
 ros2 service call /reset_turtle c_interface/srv/Clearc "{}"
 ```
+
+###
+
+### 5. Test the Square Action
+Draws a Square using the /go_to_pose Navigation Action
+```bash
+ros2 action send_goal /draw_square c_interface/action/Square "{side_length: 2.0}" --feedback
+```
+
+### 5. Test Changing the parameters
+if the system was launched using the launch file the parameters can be changed using by two ways
+```bash
+1- ros2 param set /turtle_controller max_linear_speed 0.5   and  ros2 param set /turtle_controller max_angular_speed 0.5
+
+2- ros2 service call /set_speed_limits c_interface/srv/Setspeed "{linear_limit: 3.0, angular_limit: 5.0}"
+```
+But if the system was launched by running the node manually rather than using the launch file, only the second option can be used.
 
 ###
 ---
